@@ -1,0 +1,191 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:n="clr-namespace:System;assembly=mscorlib"
+        xmlns:vm="using:Calk.ViewModels"
+        xmlns:k="clr-namespace:Calk.Models"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+        x:Class="Calk.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Calculator"
+        Width="450"
+        Height="400">
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+    </Window.Styles>
+    <Grid  RowDefinitions="auto,auto,*">
+        <Menu Grid.Row="0" >
+                <MenuItem Header="Файл">
+                    <MenuItem Header="Выход" Command="{Binding Exit}"/>
+                </MenuItem>
+        </Menu>
+        <TextBlock Grid.Row="1" Text="{Binding ShowValue}"
+                   TextAlignment="Right"
+                   FontSize="30"
+                   Margin="5"/>
+        <Grid Grid.Row="2"
+              RowDefinitions="*,*,*,*" 
+              ColumnDefinitions="*,*,*,*,*">
+          <Button Grid.Row="0" Width="80"
+                  Height="70"
+                  HorizontalContentAlignment="Center"
+                  FontSize="44" HorizontalAlignment="Center"
+                  Command="{Binding Add}">
+              <Button.CommandParameter>
+                  <n:Int32>1</n:Int32>
+              </Button.CommandParameter>
+              1
+          </Button>
+            <Button Grid.Row="0" Grid.Column="1" Width="80"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Command="{Binding Add}">
+                <Button.CommandParameter>
+                    <n:Int32>2</n:Int32>
+                </Button.CommandParameter>
+                2
+            </Button>
+            <Button Grid.Row="0" Grid.Column="2" Width="80"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Command="{Binding Add}">
+                <Button.CommandParameter>
+                    <n:Int32>3</n:Int32>
+                </Button.CommandParameter>
+                3
+            </Button>
+            <Button Grid.Row="1" Width="80"
+                    Height="70" HorizontalContentAlignment="Center"
+                    FontSize="44"
+                    HorizontalAlignment="Center"
+                    Command="{Binding Add}">
+                <Button.CommandParameter>
+                    <n:Int32>4</n:Int32>
+                </Button.CommandParameter>
+                4
+            </Button>
+            <Button Grid.Row="1" Grid.Column="1" Width="80"
+                    Height="70" HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Command="{Binding Add}">
+                <Button.CommandParameter>
+                    <n:Int32>5</n:Int32>
+                </Button.CommandParameter>
+                5
+            </Button>
+            <Button Grid.Row="1" Grid.Column="2" Width="80"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Command="{Binding Add}">
+                <Button.CommandParameter>
+                    <n:Int32>6</n:Int32>
+                </Button.CommandParameter>
+                6
+            </Button>
+            <Button Grid.Row="2" Width="80"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Command="{Binding Add}">
+                <Button.CommandParameter>
+                    <n:Int32>7</n:Int32>
+                </Button.CommandParameter>
+                7
+            </Button>
+            <Button Grid.Row="2" Grid.Column="1" Width="80"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Command="{Binding Add}">
+                <Button.CommandParameter>
+                    <n:Int32>8</n:Int32>
+                </Button.CommandParameter>
+                8
+            </Button>
+            <Button Grid.Row="2" Grid.Column="2" Width="80"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Command="{Binding Add}">
+                <Button.CommandParameter>
+                    <n:Int32>9</n:Int32>
+                </Button.CommandParameter>
+                9
+            </Button>
+            <Button Grid.Row="3"
+                    Width="80" 
+                    Height="70" 
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"  
+                    Grid.Column="1"
+                    Command="{Binding Remove}">
+                <Button.CommandParameter>
+                    <n:Int32>0</n:Int32>
+                </Button.CommandParameter>
+                0
+            </Button>
+            <Button Grid.Row="3" 
+                    Grid.Column="2"
+                    Command="{Binding Remove}" 
+                    Width="80"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Content="->"/>
+            <Button Grid.Row="3" Grid.Column="3"
+                    Width="120"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Grid.ColumnSpan="2" Command="{Binding ExecuteParam }">
+                <Button.CommandParameter>
+                    <k:Operation>res</k:Operation>
+                </Button.CommandParameter>
+                =
+            </Button>
+            <Button Grid.Row="1" Grid.Column="3"
+                    Width="70"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Command="{Binding ExecuteParam }">
+                <Button.CommandParameter>
+                   <k:Operation>Adds</k:Operation>
+                </Button.CommandParameter>
+                +
+            </Button>
+            <Button Grid.Row="1"
+                    Grid.Column="4"
+                    Width="80"
+                    Height="70"
+                    HorizontalContentAlignment="Center"
+                    FontSize="44" HorizontalAlignment="Center"
+                    Command="{Binding ExecuteParam }">
+                <Button.CommandParameter>
+                    <k:Operation>Umn</k:Operation>
+                </Button.CommandParameter>
+                *
+            </Button>
+            <Button Grid.Row="2" Grid.Column="3" 
+                    Width="80" 
+                    Height="70" 
+                    HorizontalContentAlignment="Center" 
+                    FontSize="44" 
+                    HorizontalAlignment="Center" Command="{Binding ExecuteParam}">
+                <Button.CommandParameter>
+                    <k:Operation>Del</k:Operation>
+                </Button.CommandParameter>
+                /
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
